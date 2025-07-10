@@ -3,13 +3,19 @@ FROM python:3.11-slim AS builder
 
 WORKDIR /core
 
-# Install dependencies
+# Install system dependencies including binutils for PyInstaller
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    binutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install pyinstaller
 
-# Copy your app code
-COPY ./core ./core
+# Copy your app code (keep structure clean)
+COPY ./core/app.py .
 
 # Generate binary using PyInstaller
 RUN pyinstaller --onefile app.py
