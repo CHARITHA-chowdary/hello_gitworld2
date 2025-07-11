@@ -11,7 +11,6 @@ cryptography>=38.0.4
 fastapi==0.88.0
 geopy==2.3.0
 getmac==0.8.3
-https://azrabsilensqa01.blob.core.windows.net/ilensdev/dev/edge_lite_db_engine-1.0-py3-none-any.whl
 # pyopenssl==21.0.0
 # Pillow==9.2.0
 httpx~=0.23.1
